@@ -7,10 +7,12 @@ import {
   Text,
   View,
 } from "react-native";
+import AppButton from "../components/AppButton";
 
 export default function WelcomeScreen(props) {
   return (
     <ImageBackground
+      blurRadius={5}
       style={styles.background}
       source={require("../assets/background.jpg")}
     >
@@ -18,13 +20,16 @@ export default function WelcomeScreen(props) {
         <Image source={require("../assets/logo-red.png")} style={styles.logo} />
         <Text style={styles.logoText}>Sell Your Shits</Text>
       </View>
-      <View style={styles.loginBtn}></View>
-      <View style={styles.registerBtn}></View>
+      <View style={styles.buttonContainer}>
+        <AppButton title="Login" />
+        <AppButton title="Register" color="sec" />
+      </View>
     </ImageBackground>
   );
 }
 
 const styles = StyleSheet.create({
+  buttonContainer: { padding: 20, width: "100%" },
   logoContainer: {
     position: "absolute",
     top: 80,
@@ -35,24 +40,15 @@ const styles = StyleSheet.create({
     justifyContent: "flex-end",
     alignItems: "center",
   },
-  loginBtn: {
-    width: "100%",
-    height: 70,
-    backgroundColor: "#fc5c65",
-  },
-  registerBtn: {
-    width: "100%",
-    height: 70,
-    backgroundColor: "#4ecdc4",
-  },
+
   logo: {
     width: 100,
     height: 100,
-    marginBottom: 8,
   },
   logoText: {
-    fontSize: 24,
-    fontWeight: "bold",
+    fontSize: 25,
+    fontWeight: "700",
     letterSpacing: 3,
+    paddingVertical: 20,
   },
 });
