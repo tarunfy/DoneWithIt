@@ -1,12 +1,14 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, TouchableWithoutFeedback } from "react-native";
 import colors from "../config/colors";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-function ListItemDeleteAction() {
+function ListItemDeleteAction({ onPress }) {
   return (
-    <View style={styles.container}>
-      <MaterialCommunityIcons name="delete" size={35} color="white" />
-    </View>
+    <TouchableWithoutFeedback onPress={onPress}>
+      <View style={styles.container}>
+        <MaterialCommunityIcons name="delete" size={35} color="white" />
+      </View>
+    </TouchableWithoutFeedback>
   );
 }
 
