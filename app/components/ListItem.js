@@ -13,15 +13,23 @@ import colors from "../config/colors";
 import AppText from "./AppText";
 import Swipeable from "react-native-gesture-handler/Swipeable";
 
-function ListItem({ title, subtitle, image, onPress, renderRightActions }) {
+function ListItem({
+  title,
+  subtitle,
+  image,
+  onPress,
+  renderRightActions,
+  ImageComponent,
+}) {
   return (
     <Swipeable renderRightActions={renderRightActions}>
       <TouchableNativeFeedback onPress={onPress}>
         <View style={styles.container}>
-          <Image source={image} style={styles.img} />
-          <View>
+          {ImageComponent}
+          {image && <Image source={image} style={styles.img} />}
+          <View style={styles.detailsContainer}>
             <AppText style={styles.title}>{title}</AppText>
-            <AppText style={styles.subtitle}>{subtitle}</AppText>
+            {subtitle && <AppText style={styles.subtitle}>{subtitle}</AppText>}
           </View>
         </View>
       </TouchableNativeFeedback>
@@ -30,6 +38,10 @@ function ListItem({ title, subtitle, image, onPress, renderRightActions }) {
 }
 
 const styles = StyleSheet.create({
+  detailsContainer: {
+    marginLeft: 10,
+    justifyContent: "center",
+  },
   title: {
     fontWeight: "700",
   },
@@ -44,7 +56,6 @@ const styles = StyleSheet.create({
     width: 70,
     height: 70,
     borderRadius: 35,
-    marginRight: 10,
   },
 });
 
