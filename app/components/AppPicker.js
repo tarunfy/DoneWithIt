@@ -8,13 +8,15 @@ import {
   TouchableWithoutFeedback,
   Modal,
   Button,
+  FlatList,
 } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import colors from "../config/colors";
 import defaultStyles from "../config/defaultStyles";
 import AppText from "./AppText";
 import Screen from "./Screen";
-function AppPicker({ icon, placeholder }) {
+import PickerItem from "./PickerItem";
+function AppPicker({ icon, placeholder, items }) {
   const [modalVisible, setModalVisible] = useState(false);
   return (
     <>
@@ -38,7 +40,21 @@ function AppPicker({ icon, placeholder }) {
       </TouchableWithoutFeedback>
       <Modal visible={modalVisible} animationType="slide">
         <Screen>
-          <Button title="close" onPress={() => setModalVisible(false)} />
+          <Button
+            color={colors.dark}
+            title="close"
+            onPress={() => setModalVisible(false)}
+          />
+          <FlatList
+            data={items}
+            keyExtractor={(item) => item.value.toString()}
+            renderItem={({ item }) => (
+              <PickerItem
+                label={item.label}
+                onPress={() => console.log(item)}
+              />
+            )}
+          />
         </Screen>
       </Modal>
     </>
