@@ -3,7 +3,7 @@ import { Text, View, StyleSheet, Platform, TextInput } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import colors from "../config/colors";
 import defaultStyles from "../config/defaultStyles";
-function AppTextInput({ icon, placeholder }) {
+function AppTextInput({ icon, placeholder, bool, callback }) {
   return (
     <View style={styles.container}>
       {icon && (
@@ -14,7 +14,12 @@ function AppTextInput({ icon, placeholder }) {
           color={defaultStyles.colors.lightDark}
         />
       )}
-      <TextInput style={defaultStyles.text} placeholder={placeholder} />
+      <TextInput
+        secureTextEntry={bool}
+        style={defaultStyles.text}
+        placeholder={placeholder}
+        onChangeText={callback}
+      />
     </View>
   );
 }
