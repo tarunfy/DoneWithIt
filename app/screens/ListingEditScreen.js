@@ -6,8 +6,8 @@ import {
   AppForm as Form,
   AppFormField as FormField,
   AppFormPicker as Picker,
-  AppSubmitButton,
-} from "../components/forms/index";
+  SubmitButton,
+} from "../components/forms";
 import Screen from "../components/Screen";
 
 const validationSchema = Yup.object().shape({
@@ -46,12 +46,12 @@ function ListingEditScreen() {
         <Picker items={categories} name="category" placeholder="Category" />
         <FormField
           maxLength={255}
-          multiline={true}
+          multiline
           name="description"
           numberOfLines={3}
           placeholder="Description"
         />
-        <AppSubmitButton title="Post" />
+        <SubmitButton title="Post" />
       </Form>
     </Screen>
   );
